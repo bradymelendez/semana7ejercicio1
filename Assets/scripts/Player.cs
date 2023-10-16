@@ -10,13 +10,13 @@ public class Player : MonoBehaviour
     public Transform firePoint;
     public int maxPlayerHealth = 100;
 
-    private int playerHealth;
-    private float shootCooldown = 0.5f; 
+    public int playerHealth;
+    private float shootCooldown = 0.5f;
     private float lastShootTime;
 
     private void Start()
     {
-        playerHealth = maxPlayerHealth; 
+        playerHealth = maxPlayerHealth;
     }
 
     private void Update()
@@ -42,7 +42,15 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         GameObject newBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Destroy(newBullet, 2.0f); 
+        Destroy(newBullet, 2.0f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            TakeDamage(other.GetComponent<Enemy>().enemyDamage);
+        }
     }
 
     public void TakeDamage(int damage)

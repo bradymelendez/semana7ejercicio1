@@ -161,6 +161,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 702040396811921967, guid: a7454dc7cb4723e46bb6983c66ee560c, type: 3}
   firePoint: {fileID: 334942725}
   maxPlayerHealth: 100
+  playerHealth: 0
 --- !u!54 &334942721
 Rigidbody:
   m_ObjectHideFlags: 0
